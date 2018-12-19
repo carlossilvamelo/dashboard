@@ -8,7 +8,7 @@
 - in project director, install all dependencies:
    - npm install
 - run the app
- - ng serve
+   - ng serve
 
 the components with the dashboard implementation are in the 'src/app' directory
 
