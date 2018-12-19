@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SaleService } from './sale.service';
 
 @Component({
   selector: 'app-root',
@@ -11,102 +12,30 @@ export class AppComponent {
   public opcaoCategoria;
   public opcaoProduto;
   public opcaoMarca;
+  public columnChartData;
 
-
-  //initial chart settings
-  public columnChartData =  {
-    chartType: 'ColumnChart',
-    dataTable: [
-      ['mouth', 'Ventas', { role: 'style' }],
-      ['Januery', this.randomIntFromInterval(), '#5896E6'],
-      ['February', this.randomIntFromInterval(), '#5896E6'],
-      ['March', this.randomIntFromInterval(), '#5896E6'],
-      ['April', this.randomIntFromInterval(), '#5896E6']
-    ],
-    options: {
-      height: 400,
-      legend: { position: 'bottom', alignment: 'center' },
-      vAxis: {
-        "title": "Ventas"
-      },
-      hAxis: {
-          "title": "Meses"
-      }
-    }
-  };
-
-  //productList definition
-  produtoList = {
-    roupas: ["camisa","sapato","bone"],
-    veiculos:["carro","moto", "caminhao"],
-    eletronicos:["computador","tv","Som"]
-  }
-//brandList definition
-  marcaList = {
-    camisa: ["camisa1","camisa2","camisa3"],
-    sapato: ["sapato1","sapato2","sapato3"],
-    bone: ["bone1","bone2","bone3"],
-    carro:["carro1","carro2", "carro3"],
-    moto:["moto1","moto2", "moto3"],
-    caminhao:["caminhao1","caminhao2", "caminhao3"],
-    computador:["computador1","computador2","computador3"],
-    tv:["tv1","tv2","tv3"],
-    Som:["Som1","Som2","Som3"]
-  }
-
-
-   constructor(){
+   constructor(private saleService:SaleService){
      //initializations
-    this.opcaoCategoria = ["roupas","veiculos","eletronicos"];
-    this.opcaoProduto = this.produtoList["roupas"];
-    this.opcaoMarca = this.marcaList["camisa"]
+    this.columnChartData = this.saleService.refleshDataChart();
+    this.opcaoCategoria = this.saleService.initializeOpcaoCategoria();
+    this.opcaoProduto =  this.saleService.initializeOpcaoProduto();
+    this.opcaoMarca =  this.saleService.initializeOpcaoMarca();
    }
 
    changeCategory(event: any){
-    this.opcaoProduto = this.produtoList[event.target.value];
-    this.opcaoMarca = this.marcaList[this.opcaoProduto[0]];
-    this.refleshDataTable();
+    this.opcaoProduto = this.saleService.getProductListByCategory(event.target.value);
+    this.opcaoMarca = this.saleService.getMarcaByProduct(this.opcaoProduto[0]);
+    this.columnChartData = this.saleService.refleshDataChart();
    }
 
    changeProduct(event: any){
-     this.opcaoMarca = this.marcaList[event.target.value];
-     this.refleshDataTable();
+     this.opcaoMarca = this.saleService.getMarcaByProduct(event.target.value);
+     this.columnChartData = this.saleService.refleshDataChart();
    }
 
    changeBrand(event: any){
-    this.refleshDataTable();
+    this.columnChartData = this.saleService.refleshDataChart();
    }
 
-   /**
-    * generator numbers from 0 to 600
-    */
-  randomIntFromInterval(){
-      return Math.floor(Math.random()*(600-0+1)+0);
-  }
-
-
-  refleshDataTable(){
-    this.columnChartData = {
-      chartType: 'ColumnChart',
-      dataTable: [
-        ['mouth', 'Ventas', { role: 'style' }],
-        ['Januery', this.randomIntFromInterval(), '#5896E6'],
-        ['February', this.randomIntFromInterval(), '#5896E6'],
-        ['March', this.randomIntFromInterval(), '#5896E6'],
-        ['April', this.randomIntFromInterval(), '#5896E6']
-      ],
-      options: {
-        height: 400,
-        legend: { position: 'bottom', alignment: 'center' },
-        vAxis: {
-          "title": "Ventas"
-        },
-        hAxis: {
-            "title": "Meses"
-        }
-      }
-    };
-  }
-
-
+  
 }
