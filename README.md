@@ -12,10 +12,13 @@
 
 the components with the dashboard implementation are in the 'src/app' directory
 
-├── app               
-│   ├── app.component.css        # CSS
-│   ├── app.component.html     # main component view
-│   └── app.component.html    # main component controller
+
+Directory:
+
+- app
+   - app.component.css        # CSS
+   - app.component.html     # main component view
+   - app.component.ts    # main component controller
 
 Reference:
  https://angular.io/guide/quickstart
