@@ -13,6 +13,7 @@ export class AppComponent {
   public opcaoMarca;
 
 
+  //initial chart settings
   public columnChartData =  {
     chartType: 'ColumnChart',
     dataTable: [
@@ -34,12 +35,13 @@ export class AppComponent {
     }
   };
 
+  //productList definition
   produtoList = {
     roupas: ["camisa","sapato","bone"],
     veiculos:["carro","moto", "caminhao"],
     eletronicos:["computador","tv","Som"]
   }
-
+//brandList definition
   marcaList = {
     camisa: ["camisa1","camisa2","camisa3"],
     sapato: ["sapato1","sapato2","sapato3"],
@@ -54,6 +56,7 @@ export class AppComponent {
 
 
    constructor(){
+     //initializations
     this.opcaoCategoria = ["roupas","veiculos","eletronicos"];
     this.opcaoProduto = this.produtoList["roupas"];
     this.opcaoMarca = this.marcaList["camisa"]
@@ -74,9 +77,13 @@ export class AppComponent {
     this.refleshDataTable();
    }
 
+   /**
+    * generator numbers from 0 to 600
+    */
   randomIntFromInterval(){
       return Math.floor(Math.random()*(600-0+1)+0);
   }
+
 
   refleshDataTable(){
     this.columnChartData = {
