@@ -1,0 +1,39 @@
+<header class="col-lg-12 headerStyle">
+        <div class="col-lg-1 elementHeader">Menu</div> 
+        <div class="col-lg-7 elementHeader">
+                <div class="circle"></div> 
+                <div>User Name</div>
+        </div>
+        <div class="col-lg-4 elementHeader">Sales Report</div>
+</header>
+
+<div class="col-lg-12 divContainer">
+    <div class="form-group col-lg-4 selects">
+        <label for="sel1" class="col-lg-3">Categorias</label>
+        <select title="asds" (change)="changeCategory($event)" class="form-control col-lg-2" id="sel1">
+            <option *ngFor="let item of opcaoCategoria;">{{item}}</option>
+        </select>
+    </div>
+    <div class="form-group col-lg-4 selects">
+        <label for="sel1" class="col-lg-3">Produtos</label>
+        <select (change)="changeProduct($event)" class="form-control col-lg-2" id="sel1">
+            <option *ngFor="let item of opcaoProduto;">{{item}}</option>
+        </select>
+    </div>
+    <div class="form-group col-lg-4 selects">
+        <label for="sel1" class="col-lg-3">Marcas</label>
+        <select (change)="changeBrand($event)" class="form-control col-lg-2" id="sel1">
+            <option *ngFor="let item of opcaoMarca;">{{item}}</option>
+        </select>
+    </div>
+  
+
+</div>
+
+<section class="col-lg-12 containerChart">
+        <label>Sales By Mounth for:</label>
+    <google-chart [data]="columnChartData"></google-chart>
+
+</section>
+
+<router-outlet></router-outlet>

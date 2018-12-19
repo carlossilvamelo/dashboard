@@ -1,0 +1,31 @@
+
+.circle{
+    border-radius:100%;
+    border:10px solid red;
+    width:5px;
+    height:5px;
+    background-color:red;
+    float: left
+}
+.selects select{
+    width: 50%;
+}
+.divContainer{
+    margin-top: 1%;
+}
+.containerChart{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.headerStyle{
+    background-color: #5896E6;
+    height: 50px;
+    padding:0; margin:0;
+}
+.elementHeader{
+    color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
