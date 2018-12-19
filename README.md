@@ -19,6 +19,7 @@ Directory:
    - app.component.css        # CSS
    - app.component.html     # main component view
    - app.component.ts    # main component controller
+   - sale.service.ts
 
 Reference:
  https://angular.io/guide/quickstart
